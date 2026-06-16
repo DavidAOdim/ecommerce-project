@@ -1,9 +1,10 @@
-import "./header.css";
+import { Header } from "../components/Header";
 import "./OrdersPage.css";
 
 export function OrdersPage() {
   return (
     <>
+      <Header />
       <title>Orders</title>
 
       <div className="header">
