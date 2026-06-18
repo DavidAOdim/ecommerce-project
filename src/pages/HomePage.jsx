@@ -9,13 +9,13 @@ export function HomePage() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/products").then((response) => {
+    axios.get("/api/products").then((response) => {
       setProducts(response.data); //sets products as the data then uses products (with data) in products.map to generate the HTML
     });
 
-    axios.get('http://localhost:3000/api/cart-items').then((response) => {
+    axios.get("/api/cart-items").then((response) => {
       setCart(response.data);
-    })
+    });
   }, []);
 
   return (
