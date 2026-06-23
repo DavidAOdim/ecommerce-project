@@ -9,9 +9,12 @@ export function HomePage({ cart }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/products").then((response) => {
+    const fetchHomeData = async () => {
+      const response = await axios.get("/api/products");
       setProducts(response.data); //sets products as the data then uses products (with data) in products.map to generate the HTML
-    });
+    };
+
+    fetchHomeData();
   }, []);
 
   return (
