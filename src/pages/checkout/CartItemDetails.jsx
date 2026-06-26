@@ -7,6 +7,10 @@ export function CartItemDetails({ cartItem, loadCart }) {
     await loadCart();
   };
 
+  /**
+   * todo : create updateCartItem function
+   */
+
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />

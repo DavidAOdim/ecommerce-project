@@ -20,7 +20,7 @@ export function CheckoutPage({ cart, loadCart }) {
       setPaymentSummary(response.data); //reloads payment summary
     };
     fetchCheckoutData();
-  }, [cart]);  //when cart changes it reruns useEffect and changes paymentSummary
+  }, [cart]); //when cart changes it reruns useEffect and changes paymentSummary
 
   return (
     <>
@@ -38,7 +38,7 @@ export function CheckoutPage({ cart, loadCart }) {
             loadCart={loadCart}
           />
 
-          <PaymentSummary paymentSummary={paymentSummary} />
+          <PaymentSummary paymentSummary={paymentSummary} loadCart={loadCart} />
         </div>
       </div>
     </>
