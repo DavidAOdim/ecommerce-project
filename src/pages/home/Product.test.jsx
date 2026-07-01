@@ -1,4 +1,4 @@
-import { it, expect, describe, vi } from "vitest"; //it lets us create a test //describe lets us group tests together, vi creates mocks
+import { it, expect, describe, vi, beforeEach } from "vitest"; //it lets us create a test //describe lets us group tests together, vi creates mocks
 import { render, screen } from "@testing-library/react"; //renders components in a fake webpage. Screen lets us check the fake web page
 import userEvent from "@testing-library/user-event"; //lets us simulate user events like clicking and typing
 import { Product } from "./Product"; //import the function we want to test
@@ -7,8 +7,11 @@ import axios from "axios"; //import axios to mock it
 vi.mock("axios");
 
 describe("Product component", () => {
-  it("displays the product details correctly", () => {
-    const product = {
+  let product;
+  let loadCart;
+
+  beforeEach(() => {
+    product = {
       id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
       image: "images/products/athletic-cotton-socks-6-pairs.jpg",
       name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -19,8 +22,11 @@ describe("Product component", () => {
       priceCents: 1090,
       keywords: ["socks", "sports", "apparel"],
     };
-    const loadCart = vi.fn(); //mock function to simulate loadCart prop
 
+    loadCart = vi.fn(); //reset the mock function before each test
+  });
+
+  it("displays the product details correctly", () => {
     render(<Product product={product} loadCart={loadCart} />);
 
     expect(
@@ -43,19 +49,6 @@ describe("Product component", () => {
   });
 
   it("adds a product to the cart", async () => {
-    const product = {
-      id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-      image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-      name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-      rating: {
-        stars: 4.5,
-        count: 87,
-      },
-      priceCents: 1090,
-      keywords: ["socks", "sports", "apparel"],
-    };
-    const loadCart = vi.fn(); //mock function to simulate loadCart prop
-
     render(<Product product={product} loadCart={loadCart} />);
 
     const user = userEvent.setup();
