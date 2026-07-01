@@ -45,6 +45,12 @@ export function TrackingPage({ cart }) {
   const isShipped = deliveryPercent >= 33 && deliveryPercent < 100;
   const isDelivered = deliveryPercent === 100;
 
+  let totalQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    totalQuantity += cartItem.quantity;
+  });
+
   return (
     <>
       <Header cart={cart} />
@@ -74,7 +80,7 @@ export function TrackingPage({ cart }) {
 
           <Link className="cart-link header-link" to="/checkout">
             <img className="cart-icon" src={CartIcon} />
-            <div className="cart-quantity">3</div>
+            <div className="cart-quantity">{totalQuantity}</div>
             <div className="cart-text">Cart</div>
           </Link>
         </div>

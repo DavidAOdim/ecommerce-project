@@ -20,6 +20,10 @@
   margin-bottom: 18px;
 }
 
+.quantity-textbox {
+  width: 50px;
+}
+
 .checkout-page .checkout-grid {
   display: grid;
   /* Here, 1fr means the first column will take
