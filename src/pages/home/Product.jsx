@@ -73,12 +73,13 @@ export function Product({ product, loadCart }) {
         style={{
           opacity: showAddedMessage ? 1 : 0,
         }}
+        data-testid="added-to-cart"
       >
         <img src={CheckmarkIcon} />
         Added
       </div>
 
-      <button className="add-to-cart-button button-primary" onClick={addToCart}>
+      <button className="add-to-cart-button button-primary" onClick={addToCart} data-testid="add-to-cart-button">
         Add to Cart {/*jsx comment example */}
       </button>
     </div>
